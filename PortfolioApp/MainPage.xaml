@@ -1,0 +1,57 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="PortfolioApp.MainPage"
+             Title="Lunar"
+             BackgroundColor="#70706F">
+
+    <ListView x:Name="listView"
+              RowHeight="50"
+              SelectionMode="None"
+              GroupDisplayBinding="{Binding Area}"
+              GroupShortNameBinding="{Binding Title}"
+              IsGroupingEnabled="True"
+              SeparatorVisibility="None">
+        <ListView.ItemTemplate >
+            <DataTemplate>
+                <ViewCell>
+                    <Grid>
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="50"/>
+                            <ColumnDefinition Width="*"/>
+                        </Grid.ColumnDefinitions>
+                        <Button Text="{Binding Title}"
+                            Clicked="PreviewProject"
+                            BackgroundColor="#655A7B"
+                            BorderColor="#3D364A"
+                            TextColor="#FFFFFF"
+                            BorderWidth="2"
+                            Margin="20,5,10,5"
+                            VerticalOptions="StartAndExpand"
+                            Grid.Column="1"/>
+                        <Button 
+                            CornerRadius="20"
+                            Clicked="DeleteProject"
+                            BackgroundColor="DarkRed"
+                            TextColor="Black"
+                            Margin="5"
+                            Text="X"
+                            Grid.Column="0"/>
+                    </Grid>
+                </ViewCell>
+            </DataTemplate>
+        </ListView.ItemTemplate>
+        <ListView.GroupHeaderTemplate>
+            <DataTemplate>
+                <ViewCell>
+                    <Label Text="{Binding Area}"
+                           VerticalOptions="CenterAndExpand"
+                           Margin="10,0,0,0"
+                           FontAttributes="Bold"
+                           TextColor="#FFFFFF"/>
+                </ViewCell>
+            </DataTemplate>
+        </ListView.GroupHeaderTemplate>
+    </ListView>
+
+</ContentPage>
